@@ -2,12 +2,12 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = "randomdas";
 
 function auth(req,res,next){
-  const token = req.headers.authorizartion;
+  const token = req.headers.authorization;
 
   const response = jwt.verify(token , JWT_SECRET);
 
   if(response){
-    req.userId = token.userId;
+    req.userId = response.id;
     next();
   } else{
     res.status(403).json({
@@ -16,7 +16,7 @@ function auth(req,res,next){
   }
 }
 
-module.exportd = {
+module.exports = {
   auth,
   JWT_SECRET
 }

@@ -6,7 +6,7 @@ const Objectid = mongoose.Schema.Types.Objectid;
 
 //defining the schemas
 const User = new Schema({
-  email : String,
+  email : {type: String , unique : true},
   password :String,
   name:String
 })
